@@ -1,45 +1,20 @@
+from random import choice
 from random import randint
 
 select = ["Rock", "Paper", "Scissors"]
-pick = select[randint(0,2)]
+rounds = 1
 
-
-Player = False
-
-while Player == False:
-    player = input("Enter your choice (Rock, Paper, Scissors), or enter 'quit' to stop: ")
-
-    if player == "quit":
-        break
-
-    while player in select:
-        if player == pick:
-            print(f"Tie the computer picked {pick}")
-            break
-        elif player == "Rock":
-            if pick == "Paper":
-                print(f"You lose the computer picked {pick}")
-                Player = True
-                break
-            else:
-                print(f"You win the computer picked {pick}")
-                Player = True
-                break
-        elif player == "Paper":
-            if pick == "Scissors":
-                print(f"You lose the computer picked {pick}")
-                Player = True
-                break
-            else:
-                print(f"You win the computer picked {pick}")
-                Player = True
-                break
-        elif player == "Scissors":
-            if pick == "Rock":
-                print(f"You lose the computer picked {pick}")
-                Player = True
-                break
-            else:
-                print(f"You win the computer picked {pick}")
-                Player = True
-                break
+for _ in range(rounds):
+    pick = select[randint(0,2)]
+    player = input("Enter your choice (Rock, Paper, Scissors): ")
+    
+    if player == pick:
+        print(f"Tie! The computer picked {pick}")
+    elif (
+        (player == "Rock" and pick == "Paper") or
+        (player == "Paper" and pick == "Scissors") or
+        (player == "Scissors" and pick == "Rock")
+    ):
+        print(f"You lose! The computer picked {pick}")
+    else:
+        print(f"You win! The computer picked {pick}")
